@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __importDefault(require("path"));
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const middleware_1 = __importDefault(require("./utils/middleware"));
+const ping_1 = __importDefault(require("./routes/ping"));
+const diagnosis_1 = __importDefault(require("./routes/diagnosis"));
+const patients_1 = __importDefault(require("./routes/patients"));
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use(middleware_1.default.requestLogger);
+app.use(express_1.default.static(path_1.default.join(__dirname, 'frontend')));
+app.use('/api/ping', ping_1.default);
+app.use('/api/diagnosis', diagnosis_1.default);
+app.use('/api/patients', patients_1.default);
+app.use(middleware_1.default.unkownEndPoint);
+app.use(middleware_1.default.errorHandler);
+exports.default = app;
