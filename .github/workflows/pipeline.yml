@@ -20,18 +20,21 @@ jobs:
 
   backend_lint:
     needs: [backend_install_packages]
+    runs-on: ubuntu-20.04
     steps:
       - name: npm run lint
         run: npm run lint
 
   backend_build:
     needs: [backend_lint]
+    runs-on: ubuntu-20.04
     steps:
       - name: npm run tsc
         run: npm run tsc
 
   backend_test:
     needs: [backend_build]
+    runs-on: ubuntu-20.04
     steps:
       - name: npm run test
         run: npm run test
