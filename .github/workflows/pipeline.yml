@@ -65,8 +65,8 @@ jobs:
         run: npm install
 
       - name: e2e testing
-        working-directory: './frontend'
         uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
         with:
-          start: 'npm run start', 'cd .. && npm run start:test'
+          command: 'cd ./frontend && npm run start'
+          start: '', npm run start:test
           wait-on: 'http://localhost:3000', 'http://localhost:3001'
