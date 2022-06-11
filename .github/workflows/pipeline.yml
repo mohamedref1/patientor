@@ -10,10 +10,28 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  install_packages:
+  backend_install_packages:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd
       - name: npm install
         run: npm install
+
+  backend_lint:
+    needs: [backend_install_packages]
+    steps:
+      - name: npm run lint
+        run: npm run lint
+
+  backend_build:
+    needs: [backend_lint]
+    steps:
+      - name: npm run tsc
+        run: npm run tsc
+
+  backend_test:
+    needs: [backend_build]
+    steps:
+      - name: npm run test
+        run: npm run test
