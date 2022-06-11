@@ -82,6 +82,7 @@ jobs:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
       - name: deploy to heroku
+        if: ${{ github.event_name == 'push' && !contains(join(env.COMMIT_MESSAGES, ', '), '#skip') }}
         uses: akhileshns/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820 
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -96,10 +97,11 @@ jobs:
 
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' && !contains(join(env.COMMIT_MESSAGES, ', '), '#skip') }}
-        uses: anothrNick/github-tag-action@3840ec22ac98e14d981375e3ae2d8d0392964521
+        uses: anothrNick/github-tag-action@ce4b5ffa38e072fa7a901e417253c438fcc2ccce
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
+          WITH_V: true
 
   discord_notification:
     if: ${{ always() }}
