@@ -69,4 +69,4 @@ jobs:
         with:
           command: 'cd ./frontend && npm run test:e2e'
           start: npm run start
-          wait-on: http://localhost:3000, http://localhost:3001
+          wait-on: http://localhost:3000, http://localhost:4000
