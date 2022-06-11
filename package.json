@@ -11,7 +11,9 @@
     "test": "jest ./src/tests",
     "lint": "eslint ./src/*.ts ./src/**/*.ts",
     "lint:fix": "eslint ./src/*.ts ./src/**/*.ts --fix",
-    "frontend:build": "rm -rf ./dist/frontend && cd ./frontend && rm -rf ./build && npm run build && cp -r build ../dist/frontend"
+    "frontend:build": "rm -rf ./dist/frontend && cd ./frontend && rm -rf ./build && npm run build && cp -r build ../dist/frontend",
+    "deploy": "git add . && git commit -m 'Deploy to heroku' && git push heroku main",
+    "deploy-full": "npm run tsc && npm run frontend:build && npm run deploy"
   },
   "author": "",
   "license": "ISC",
