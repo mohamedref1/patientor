@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment */
 import { render } from "@testing-library/react";
 import { Entry as EntryType } from '../types';
 import Entry from '../PatientPage/Entry';
