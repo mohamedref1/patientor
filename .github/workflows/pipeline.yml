@@ -69,5 +69,5 @@ jobs:
         with:
           working-directory: frontend
           command: 'npm run test:e2e'
-          start: npm run start, npm run server:test -- PORT=3001
+          start: npm run start, npm run server:test
           wait-on: http://localhost:3000, http://localhost:3001
