@@ -54,7 +54,6 @@ jobs:
         run: npm run test
   
   e2e_testing:
-    needs: [backend_pipeline, frontend_pipeline]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
@@ -76,7 +75,7 @@ jobs:
           wait-on: http://localhost:3000, http://localhost:3001
 
   deployment:
-    needs: [e2e_testing]
+    needs: [backend_pipeline, frontend_pipeline, e2e_testing]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
