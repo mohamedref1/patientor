@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd
       
-      - name: package install
+      - name: packages install
         run: npm install
       
       - name: lint
@@ -27,3 +27,25 @@ jobs:
       
       - name: test
         run: npm run test
+
+  frontend_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd
+
+      - name: packages install
+      - working-directory: './frontend'
+      - run: npm install
+
+      - name: lint
+      - working-directory: './frontend'
+      - run: npm run lint
+
+      - name: build
+      - working-directory: './frontend'
+      - run: npm run build
+
+      - name: test
+      - working-directory: './frontend'
+      - run: npm run test
