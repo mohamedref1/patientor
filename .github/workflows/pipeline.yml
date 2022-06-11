@@ -35,17 +35,17 @@ jobs:
       - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd
 
       - name: packages install
-      - working-directory: './frontend'
-      - run: npm install
+        working-directory: './frontend'
+        run: npm install
 
       - name: lint
-      - working-directory: './frontend'
-      - run: npm run lint
+        working-directory: './frontend'
+        run: npm run lint
 
       - name: build
-      - working-directory: './frontend'
-      - run: npm run build
+        working-directory: './frontend'
+        run: npm run build
 
       - name: test
-      - working-directory: './frontend'
-      - run: npm run test
+        working-directory: './frontend'
+        run: npm run test
