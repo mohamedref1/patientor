@@ -65,6 +65,8 @@ jobs:
         run: npm install
 
       - name: e2e tests
+        env:
+          PORT: 3001
         uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
         with:
           working-directory: frontend
