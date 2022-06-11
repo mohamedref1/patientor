@@ -107,7 +107,7 @@ jobs:
     needs: [tag_release]
     runs-on: ubuntu-20.04
     steps:
-      - uses: technote-space/workflow-conclusion-action@vd6c558dd4a0c34961129a1a73959688c7cae5a90
+      - uses: technote-space/workflow-conclusion-action@d6c558dd4a0c34961129a1a73959688c7cae5a90
       - name: Build succeeded
         if: ${{ env.WORKFLOW_CONCLUSION == 'success' }}
         uses: rjstone/discord-webhook-notify@v1
