@@ -49,3 +49,24 @@ jobs:
       - name: test
         working-directory: './frontend'
         run: npm run test
+  
+  e2e_testing:
+    needs: [backend_pipeline, frontend_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd
+
+      - name: backend packages install
+        run: npm install
+
+      - name: frontend packages install
+        working-directory: './frontend'
+        run: npm install
+
+      - name: e2e testing
+        working-directory: './frontend'
+        uses: cypress-io/github-actio@
+        with:
+          start: npm run start, 'cd .. && npm run start:test'
+          wait-on: 'http://localhost:3000', 'http://localhost:3001'
