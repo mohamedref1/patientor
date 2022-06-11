@@ -117,7 +117,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: info
-          text: "A new version of Pokedex deployed"
+          text: "A new version of patientor deployed"
           color: "#32CD32"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Build failed
