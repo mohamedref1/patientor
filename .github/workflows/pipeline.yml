@@ -59,3 +59,7 @@ jobs:
 
       - name: backend packages install
         run: npm install
+
+      - name: frontend packages install
+        working-directory: './frontend'
+        run: npm install
