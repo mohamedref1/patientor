@@ -43,7 +43,7 @@
     "test:e2e": "cypress run",
     "lint": "eslint './src/*.{ts,tsx}' './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/*.{ts,tsx}' './src/**/*.{ts,tsx}' --fix",
-    "server:test": "cd .. && npm run start:test"
+    "server:test": "cd .. && PORT=3001 npm run start:test"
   },
   "browserslist": {
     "production": [
