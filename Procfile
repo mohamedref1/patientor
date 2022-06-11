@@ -1,1 +1,1 @@
-web: sh -c 'npm install -g cross-env && npm run start'
+sh -c 'npm install -g cross-env && npm run start'
