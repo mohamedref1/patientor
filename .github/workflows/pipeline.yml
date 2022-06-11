@@ -104,7 +104,7 @@ jobs:
 
   discord_notification:
     if: ${{ always() }}
-    needs: [deployment]
+    needs: [tag_release]
     runs-on: ubuntu-20.04
     steps:
       - uses: technote-space/workflow-conclusion-action@vd6c558dd4a0c34961129a1a73959688c7cae5a90
