@@ -102,4 +102,25 @@ jobs:
           DEFAULT_BUMP: patch
           WITH_V: true
 
-
+  discord_notification:
+    if: ${{ always() }}
+    needs: [deployment]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: technote-space/workflow-conclusion-action@vd6c558dd4a0c34961129a1a73959688c7cae5a90
+      - name: Build succeeded
+        if: ${{ env.WORKFLOW_CONCLUSION == 'success' }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          text: "A new version of Pokedex deployed"
+          color: "#32CD32"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Build failed
+        if: ${{ env.WORKFLOW_CONCLUSION != 'success' }}
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+        with:
+          severity: error
+          text: "build failed"
+          color: "#C70039"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
