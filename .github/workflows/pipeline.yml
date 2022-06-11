@@ -81,7 +81,8 @@ jobs:
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
-      - uses: akhileshns/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820 
+      - name: deploy to heroku
+        uses: akhileshns/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820 
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
@@ -90,7 +91,7 @@ jobs:
   tag_release:
     needs: [deployment]
     runs-on: ubuntu-20.04
-    stepts:
+    steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
       - name: Bump version and push tag
